@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>OptiCrop | Find Your Crop</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+  <nav class="navbar">
+    <a class="brand" href="/">🌱 OptiCrop</a>
+    <div class="nav-links">
+      <a href="/">Home</a>
+      <a href="/about">About</a>
+      <a href="/findyourcrop">Find Your Crop</a>
+    </div>
+  </nav>
+
+  <div class="container">
+    <div class="card">
+      <h2>Find Your Crop</h2>
+      <p>Enter your soil nutrient levels and local climate conditions below to get a crop recommendation.</p>
+
+      <form class="crop-form" action="/predict" method="POST">
+        <div>
+          <label for="N">Nitrogen (N)</label>
+          <input type="number" step="any" id="N" name="N" placeholder="e.g. 90" required>
+        </div>
+        <div>
+          <label for="P">Phosphorous (P)</label>
+          <input type="number" step="any" id="P" name="P" placeholder="e.g. 42" required>
+        </div>
+        <div>
+          <label for="K">Potassium (K)</label>
+          <input type="number" step="any" id="K" name="K" placeholder="e.g. 43" required>
+        </div>
+        <div>
+          <label for="temperature">Temperature (°C)</label>
+          <input type="number" step="any" id="temperature" name="temperature" placeholder="e.g. 20.9" required>
+        </div>
+        <div>
+          <label for="humidity">Humidity (%)</label>
+          <input type="number" step="any" id="humidity" name="humidity" placeholder="e.g. 82.0" required>
+        </div>
+        <div>
+          <label for="ph">Soil pH</label>
+          <input type="number" step="any" id="ph" name="ph" placeholder="e.g. 6.5" required>
+        </div>
+        <div>
+          <label for="rainfall">Rainfall (mm)</label>
+          <input type="number" step="any" id="rainfall" name="rainfall" placeholder="e.g. 202.9" required>
+        </div>
+
+        <div class="submit-row">
+          <button type="submit" class="btn">Predict Best Crop</button>
+        </div>
+      </form>
+
+      {% if prediction_text %}
+      <div class="result-box">
+        {{ prediction_text }}
+      </div>
+      {% endif %}
+    </div>
+  </div>
+
+  <footer>
+    &copy; 2026 OptiCrop — Smart Agricultural Production Optimization Engine
+  </footer>
+  <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+</body>
+</html>
