@@ -1,0 +1,43 @@
+# Coding & Solution
+
+## Solution Summary
+
+| Field | Details |
+|---|---|
+| Repository Link / URL | https://github.com/manju4444/OptiCrop (source) — combined into this documentation repo under `5. Project Development Phase` |
+| Programming Language(s) | Python, HTML, CSS, JavaScript |
+| Framework(s) Used | Flask, scikit-learn, pandas, numpy, matplotlib, seaborn |
+| Key Features Implemented | Data cleaning & IQR-based outlier removal; univariate (boxplot), bivariate (correlation heatmap), and multivariate (pairplot) analysis; seasonal crop grouping; K-Means clustering + Elbow Method; Logistic Regression vs. Random Forest comparison with automatic best-model selection; Flask web app with **Home**, **About**, and **Find Your Crop** pages |
+| Pending / Incomplete Features | Confidence-score / top-3 crop suggestions; persistent prediction history; cloud deployment |
+| Setup / Run Instructions | 1. `pip install -r requirements.txt`  2. `python train_model.py` (regenerates `model.pkl` and the EDA plots in `static/images/`)  3. `python app.py`  4. Open `http://127.0.0.1:5000` |
+
+## File Overview
+
+| File | Purpose |
+|---|---|
+| `train_model.py` | Full ML pipeline — load data, clean, remove outliers (IQR), EDA plots, seasonal analysis, K-Means + Elbow, train & compare Logistic Regression / Random Forest, save best model to `model.pkl` |
+| `app.py` | Flask backend — routes for Home (`/`), About (`/about`), Find Your Crop (`/findyourcrop`), and the prediction endpoint (`/predict`) |
+| `templates/home.html` | Landing page introducing OptiCrop |
+| `templates/about.html` | Objectives, methodology, and input features explanation |
+| `templates/findyourcrop.html` | Input form (N, P, K, temperature, humidity, pH, rainfall) and prediction result display |
+| `static/css/style.css`, `static/js/script.js` | Styling and client-side behavior |
+| `static/images/*.png` | Generated EDA plots (boxplot, correlation heatmap, pairplot, elbow curve) |
+| `crop_recommendation.csv` | Training dataset (2,200 records, 7 features, 22 crop classes) |
+| `model.pkl` | Serialized best model + feature order, loaded by `app.py` |
+| `Procfile` | Deployment entry point for Gunicorn (`web: gunicorn app:app`) |
+
+## Code Quality Checklist
+
+| S.No | Criteria | Status (Yes/No) |
+|---|---|---|
+| 1 | Code is modular and organized into functions | Yes |
+| 2 | Meaningful variable and function names are used | Yes |
+| 3 | Code includes comments/documentation (module docstrings) | Yes |
+| 4 | Error handling is implemented for critical operations (invalid/non-numeric input in `/predict`) | Yes |
+| 5 | The application runs without critical errors | Yes |
+| 6 | Code is committed to a version control repository | Yes |
+
+## Additional Notes / Comments
+`train_model.py` and `app.py` are intentionally decoupled: retraining the model (e.g., after adding
+more data) only requires re-running `train_model.py` to refresh `model.pkl` — no changes to the
+Flask app are needed as long as the feature order stays the same.
