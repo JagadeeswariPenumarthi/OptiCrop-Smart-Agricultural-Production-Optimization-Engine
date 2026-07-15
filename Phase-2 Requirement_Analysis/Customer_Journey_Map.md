@@ -1,1 +1,11 @@
+# Customer Journey Map
 
+
+| Phase of Journey | Stage 1: Discovery | Stage 2: Input & Prediction | Stage 3: Decision & Action |
+|---|---|---|---|
+| **Actions** | Farmer hears about OptiCrop from an extension officer or online; opens the web app | Enters soil (N, P, K, pH) and climate (temperature, humidity, rainfall) values into the form | Reviews the recommended crop; plans sowing accordingly |
+| **Touchpoint** | Landing page / home screen | Prediction input form → "Predict" button | Results page showing recommended crop |
+| **Customer Thought** | "Can this really tell me what to plant?" | "Am I entering the right values?" | "This matches what I expected / gives me a new option to consider" |
+| **Customer Feeling** | Curious, slightly skeptical | Focused, hopeful | Confident, relieved |
+| **Process Ownership** | Product/UX team (onboarding clarity) | ML & Backend team (validation, model accuracy) | ML team (recommendation quality) |
+| **Opportunities** | Add a short explainer/tutorial on first visit | Add input validation and helpful tooltips per field | Show confidence score and top-3 alternative crops, not just one |
