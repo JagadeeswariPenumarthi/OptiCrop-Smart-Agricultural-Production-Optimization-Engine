@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>OptiCrop | Home</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+  <nav class="navbar">
+    <a class="brand" href="/">🌱 OptiCrop</a>
+    <div class="nav-links">
+      <a href="/">Home</a>
+      <a href="/about">About</a>
+      <a href="/findyourcrop">Find Your Crop</a>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <h1>OptiCrop</h1>
+    <p>Smart Agricultural Production Optimization Engine — an intelligent, data-driven
+       crop recommendation system that helps farmers choose the most suitable crop
+       for their soil and climate conditions.</p>
+    <a class="btn" href="/findyourcrop">Find Your Crop</a>
+  </section>
+
+  <div class="container">
+    <div class="card">
+      <h2>Why OptiCrop?</h2>
+      <p>
+        Choosing the right crop depends on many interacting factors — soil nutrients,
+        temperature, humidity, soil pH, and rainfall. OptiCrop uses a machine learning
+        model trained on real agricultural data to recommend the crop best suited to
+        your specific conditions.
+      </p>
+      <div class="feature-grid">
+        <div class="feature">
+          <strong>Data-Driven</strong><br>
+          Recommendations based on a trained classification model, not guesswork.
+        </div>
+        <div class="feature">
+          <strong>Fast &amp; Simple</strong><br>
+          Enter seven soil and climate values and get an instant recommendation.
+        </div>
+        <div class="feature">
+          <strong>Built for Farmers</strong><br>
+          Designed to support better crop selection and more sustainable farming.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    &copy; 2026 OptiCrop — Smart Agricultural Production Optimization Engine
+  </footer>
+  <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+</body>
+</html>
