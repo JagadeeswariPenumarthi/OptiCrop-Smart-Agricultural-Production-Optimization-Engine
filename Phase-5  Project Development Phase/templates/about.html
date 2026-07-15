@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>OptiCrop | About</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+  <nav class="navbar">
+    <a class="brand" href="/">🌱 OptiCrop</a>
+    <div class="nav-links">
+      <a href="/">Home</a>
+      <a href="/about">About</a>
+      <a href="/findyourcrop">Find Your Crop</a>
+    </div>
+  </nav>
+
+  <div class="container">
+    <div class="card">
+      <h2>About OptiCrop</h2>
+      <p>
+        OptiCrop is a machine learning powered web application that recommends the
+        most suitable crop to grow based on soil nutrient levels and climate
+        conditions. It is intended as a decision-support tool for farmers and
+        agricultural planners.
+      </p>
+    </div>
+
+    <div class="card">
+      <h2>Objectives</h2>
+      <ul>
+        <li>Analyze soil and climate data to identify patterns linked to crop suitability.</li>
+        <li>Train a classification model capable of recommending a crop from seven input features.</li>
+        <li>Provide a simple, accessible web interface for real-time predictions.</li>
+        <li>Support more informed, data-driven crop selection to improve yield and sustainability.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>Methodology</h2>
+      <ol>
+        <li>Load and inspect the crop recommendation dataset (2,200+ records).</li>
+        <li>Clean the data: check for missing values and duplicate rows.</li>
+        <li>Detect and remove outliers using the Interquartile Range (IQR) method.</li>
+        <li>Explore the data with boxplots and simple seasonal crop groupings.</li>
+        <li>Split the data into training (80%) and testing (20%) sets.</li>
+        <li>Train a Logistic Regression classifier (with feature scaling) to predict the crop label.</li>
+        <li>Use K-Means clustering and the Elbow Method as a complementary unsupervised analysis.</li>
+        <li>Evaluate the model using accuracy, precision, recall, F1-score, and a full classification report.</li>
+        <li>Save the trained model to <code>model.pkl</code> for use by the Flask application.</li>
+      </ol>
+    </div>
+
+    <div class="card">
+      <h2>Inputs Used for Prediction</h2>
+      <div class="feature-grid">
+        <div class="feature">Nitrogen (N)</div>
+        <div class="feature">Phosphorous (P)</div>
+        <div class="feature">Potassium (K)</div>
+        <div class="feature">Temperature (°C)</div>
+        <div class="feature">Humidity (%)</div>
+        <div class="feature">Soil pH</div>
+        <div class="feature">Rainfall (mm)</div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    &copy; 2026 OptiCrop — Smart Agricultural Production Optimization Engine
+  </footer>
+  <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+</body>
+</html>
