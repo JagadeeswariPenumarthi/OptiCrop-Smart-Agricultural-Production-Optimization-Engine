@@ -1,18 +1,40 @@
-# Customer Journey Map
+# Data Flow Diagram
 
-| Field | Details |
-|---|---|
-| Date | [DD Month YYYY] |
-| Team ID | OC-2026-01 |
-| Project Name | OptiCrop: Smart Agricultural Production Optimization Engine |
-| Maximum Marks | 2 Marks |
 
-| Phase of Journey | Stage 1: Discovery | Stage 2: Input & Prediction | Stage 3: Decision & Action |
-|---|---|---|---|
-| **Actions** | Farmer hears about OptiCrop from an extension officer or online; opens the web app | Enters soil (N, P, K, pH) and climate (temperature, humidity, rainfall) values into the form | Reviews the recommended crop; plans sowing accordingly |
-| **Touchpoint** | Landing page / home screen | Prediction input form → "Predict" button | Results page showing recommended crop |
-| **Customer Thought** | "Can this really tell me what to plant?" | "Am I entering the right values?" | "This matches what I expected / gives me a new option to consider" |
-| **Customer Feeling** | Curious, slightly skeptical | Focused, hopeful | Confident, relieved |
-| **Process Ownership** | Product/UX team (onboarding clarity) | ML & Backend team (validation, model accuracy) | ML team (recommendation quality) |
-| **Opportunities** | Add a short explainer/tutorial on first visit | Add input validation and helpful tooltips per field | Show confidence score and top-3 alternative crops, not just one |
+## Project Flow (Level 0 DFD)
 
+```
+ [Farmer / User]
+        │  (N, P, K, temperature, humidity, pH, rainfall)
+        ▼
+ ┌───────────────────────┐
+ │ 1. Web Interface       │  (HTML/CSS/JS form)
+ │    Collect Input        │
+ └──────────┬────────────┘
+            ▼
+ ┌───────────────────────┐
+ │ 2. Flask Backend        │  Validate & format input
+ │    Process Request      │
+ └──────────┬────────────┘
+            ▼
+ ┌───────────────────────┐        ┌─────────────────────┐
+ │ 3. Trained ML Model     │◄──────┤ Model Store          │
+ │    (KNN / Logistic       │      │ best_model.pkl        │
+ │     Regression / K-Means)│      └─────────────────────┘
+ └──────────┬────────────┘
+            ▼
+ ┌───────────────────────┐
+ │ 4. Generate Prediction  │  Recommended crop + confidence
+ └──────────┬────────────┘
+            ▼
+ [Farmer / User] ◄── Recommendation displayed on results page
+```
+
+## DFD Symbol Legend
+
+| Symbol | Name | Description |
+|---|---|---|
+| Oval/Rounded shape | External Entity | Farmer/User who submits soil & climate data and receives the recommendation |
+| Numbered rectangle | Process | Web Interface, Flask Backend, ML Model Inference, Prediction Generation |
+| Solid rectangle | Data Store | Trained model file (`best_model.pkl`), crop dataset (`crop_dataset.csv`) |
+| Labeled arrow | Data Flow | N/P/K/temperature/humidity/pH/rainfall values → prediction result |
